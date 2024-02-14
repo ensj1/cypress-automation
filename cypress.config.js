@@ -1,11 +1,16 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  reporter: "mochawesome",
+  // reporter: "mochawesome",
+  // reporterOptions: {
+  //   "overwrite": false,
+  //   "html": false,
+  //   "json": true
+  // },
+  reporter: 'junit',
   reporterOptions: {
-    "overwrite": false,
-    "html": false,
-    "json": true
+    mochaFile: 'results/my-test-output.xml',
+    toConsole: true,
   },
   e2e: {
     baseUrl: 'https://example.cypress.io',

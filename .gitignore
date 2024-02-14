@@ -3,3 +3,4 @@ cypress-combined-report.json
 testReport
 mochawesome-report
 /cypress/screenshots
+results
