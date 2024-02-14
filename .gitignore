@@ -4,3 +4,4 @@ testReport
 mochawesome-report
 /cypress/screenshots
 results
+cypress/reports

@@ -7,17 +7,17 @@ module.exports = defineConfig({
   //   "html": false,
   //   "json": true
   // },
-  reporter: 'junit',
-  reporterOptions: {
-    mochaFile: 'results/my-test-output.xml',
-    toConsole: true,
-  },
+  // reporter: 'junit',
+  // reporterOptions: {
+  //   mochaFile: 'results/my-test-output.xml',
+  //   toConsole: true,
+  // },
+  reporter: 'cypress-mochawesome-reporter',
   e2e: {
     baseUrl: 'https://example.cypress.io',
-    //reporter: 'cypress-mochawesome-reporter',
     setupNodeEvents(on, config) {
       // implement node event listeners here
-      //require('cypress-mochawesome-reporter/plugin')(on);
+      require('cypress-mochawesome-reporter/plugin')(on);
     }
   },
 });
