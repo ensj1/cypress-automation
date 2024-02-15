@@ -11,10 +11,12 @@ pipeline {
         }
         stage('Run e2e tests') {
             steps {
-                try {
-                    sh 'npx cypress run --e2e'
-                } catch (Exception e) {
-                    echo 'Exception occurred: ' + e.toString()
+                script {
+                    try {
+                        sh 'npx cypress run --e2e'
+                    } catch (Exception e) {
+                        echo 'Exception occurred: ' + e.toString()
+                    }
                 }
             }
         }  
