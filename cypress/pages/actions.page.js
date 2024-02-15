@@ -26,11 +26,6 @@ class ActionsPage {
 
         return this;
     }
-
-    submit() {
-        const button = cy.get(`[data-testid=SignInSubmitButton]`);
-        button.click();
-    }
 }
 
 export default ActionsPage;
