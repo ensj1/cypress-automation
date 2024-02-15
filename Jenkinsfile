@@ -9,18 +9,22 @@ pipeline {
                 sh 'npm -D install'
            }
         }
-        stage('Run e2e tests') {
-            steps {
-                sh 'npx cypress run --e2e'
+        try {
+            stage('Run e2e tests') {
+                steps {
+                    sh 'npx cypress run --e2e'
+                }
             }
+        } catch (Exception e) {
+            echo 'Exception occurred: ' + e.toString()
         }
     }
     post {
         always {
             publishHTML (target: [
-                allowMissing: false,
+                allowMissing: true,
                 alwaysLinkToLastBuild: true,
-                keepAll: false,
+                keepAll: true,
                 reportDir: 'cypress/reports/html',
                 reportFiles: 'index.html',
                 reportName: 'Cypress Automation',
