@@ -6,11 +6,9 @@ pipeline {
                 sh 'npm -D install'
            }
         }
-        stage('e2e Tests') {
-            stage('Run e2e tests') {
-                steps {
-                    sh 'npx cypress run --e2e'
-                }
+        stage('Run e2e tests') {
+            steps {
+                sh 'npx cypress run --e2e'
             }
         }
     }
