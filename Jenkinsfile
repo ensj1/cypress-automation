@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    options {
+        ansiColor('xterm')
+    }
     stages {
         stage('Install dependencies') {
             steps {
@@ -17,7 +20,7 @@ pipeline {
             publishHTML (target: [
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
-                keepAll: true,
+                keepAll: false,
                 reportDir: 'cypress/reports/html',
                 reportFiles: 'index.html',
                 reportName: 'Cypress Automation',

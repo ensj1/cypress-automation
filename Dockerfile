@@ -1,5 +1,7 @@
 FROM jenkins/jenkins:2.426.3-jdk17
 USER root
+ENV JAVA_TOOL_OPTIONS -Dfile.encoding=UTF-8
+ENV LANG="en_US.UTF-8"
 RUN apt-get update && apt-get install -y lsb-release
 RUN curl -fsSLo /usr/share/keyrings/docker-archive-keyring.asc \
     https://download.docker.com/linux/debian/gpg
