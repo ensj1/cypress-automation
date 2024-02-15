@@ -9,15 +9,15 @@ pipeline {
                 sh 'npm -D install'
            }
         }
-        try {
-            stage('Run e2e tests') {
-                steps {
+        stage('Run e2e tests') {
+            steps {
+                try {
                     sh 'npx cypress run --e2e'
+                } catch (Exception e) {
+                    echo 'Exception occurred: ' + e.toString()
                 }
             }
-        } catch (Exception e) {
-            echo 'Exception occurred: ' + e.toString()
-        }
+        }  
     }
     post {
         always {
