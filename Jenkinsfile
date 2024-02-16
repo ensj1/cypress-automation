@@ -12,11 +12,7 @@ pipeline {
         stage('Run e2e tests') {
             steps {
                 script {
-                    try {
-                        sh 'npx cypress run --e2e'
-                    } catch (Exception e) {
-                        echo 'Exception occurred: ' + e.toString()
-                    }
+                    sh 'npx cypress run --e2e'
                 }
             }
         }  
@@ -24,7 +20,7 @@ pipeline {
     post {
         always {
             publishHTML (target: [
-                allowMissing: true,
+                allowMissing: false,
                 alwaysLinkToLastBuild: true,
                 keepAll: true,
                 reportDir: 'cypress/reports/html',
