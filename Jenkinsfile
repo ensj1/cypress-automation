@@ -12,7 +12,7 @@ pipeline {
         stage('Run e2e tests') {
             steps {
                 script {
-                    sh 'npx cypress run --e2e'
+                    sh 'npx cypress run --e2e --browser chrome'
                 }
             }
         }  

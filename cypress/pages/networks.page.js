@@ -1,4 +1,5 @@
 class NetworksPage {
+
     visit() {
         cy.visit('/commands/network-requests')
     }

@@ -1,11 +1,11 @@
 import ActionsPage from '../pages/actions.page';
 import NetworksPage from '../pages/networks.page';
 
-const token = 'abcd123'
-const actionsPage = new ActionsPage();
-const networksPage = new NetworksPage();
-
 describe('Test the Commands Pages', () => {
+
+    const token = 'abcd123'
+    const actionsPage = new ActionsPage();
+    const networksPage = new NetworksPage();
 
     beforeEach(() => {
         cy.fixture('example').then(function (data) {
