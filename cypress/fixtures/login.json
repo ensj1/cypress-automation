@@ -1,4 +1,10 @@
-{
-  "email": "eve.holt@reqres.in",
-  "password": "cityslicka"
-}
+[
+  {
+    "email": "eve.holt@reqres.in",
+    "password": "cityslicka"
+  },
+  {
+    "email": "michael.lawson@reqres.in",
+    "password": "password"
+  }
+]

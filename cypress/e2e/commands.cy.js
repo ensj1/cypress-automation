@@ -36,19 +36,16 @@ describe('Test the Commands Pages', () => {
     })
 
     it('user can type to input', () => {
-        actionsPage.visit()
-        actionsPage.getEmailField().type('Test').should('have.value', 'Test')
+        actionsPage.visit().getEmailField().type('Test').should('have.value', 'Test')
     })
 
     it('user can type description in force', () => {
         let desc = 'Description'
-        actionsPage.visit()
-        actionsPage.getDescriptionField().first().type(desc).should('have.value', desc).clear().should('have.value', '')
+        actionsPage.visit().getDescriptionField().first().type(desc).should('have.value', desc).clear().should('have.value', '')
     })
 
     it('user can check checkboxes', () => {
-        actionsPage.visit()
-        actionsPage.getFirstCheckbox().check({ force: true }).should((checkbox) => {
+        actionsPage.visit().getFirstCheckbox().check({ force: true }).should((checkbox) => {
             expect(checkbox).be.checked
         })
     })
@@ -62,16 +59,14 @@ describe('Test the Commands Pages', () => {
 
     it('user can type to input with hidden info', () => {
         const testEmailText = 'Test'
-        actionsPage.visit()
-        actionsPage.fillEmail(testEmailText)
+        actionsPage.visit().fillEmail(testEmailText)
         actionsPage.getEmailField().should((emailField) => {
             expect(emailField).have.value(testEmailText)
         })
     })
 
     it('user can click on the different sections of a canvas', () => {
-        actionsPage.visit()
-        actionsPage.getActionCanvas().click('top')
+        actionsPage.visit().getActionCanvas().click('top')
         actionsPage.getActionCanvas().click('bottomRight')
         actionsPage.getActionCanvas().click(80, 100)
     })
