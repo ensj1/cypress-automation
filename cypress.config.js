@@ -12,11 +12,18 @@ module.exports = defineConfig({
   //   mochaFile: 'results/my-test-output.xml',
   //   toConsole: true,
   // },
-  reporter: 'cypress-mochawesome-reporter',
+  reporter: "cypress-mochawesome-reporter",
   e2e: {
-    baseUrl: 'https://example.cypress.io',
+    baseUrl: "https://example.cypress.io",
     setupNodeEvents(on, config) {
-      require('cypress-mochawesome-reporter/plugin')(on);
-    }
+      require("cypress-mochawesome-reporter/plugin")(on);
+    },
+  },
+
+  component: {
+    devServer: {
+      framework: "create-react-app",
+      bundler: "webpack",
+    },
   },
 });

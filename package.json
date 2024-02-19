@@ -4,21 +4,33 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "delete:reportFolder": "rm -rf mochawesome-report/",
     "test:cli": "npm run delete:reportFolder && npx cypress run --e2e",
     "merge:reports": "mochawesome-merge mochawesome-report/*.json > cypress-combined-report.json",
     "create:html:report": "npm run merge:reports && marge --reportDir testReport cypress-combined-report.json"
   },
   "keywords": [],
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "not dead"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@cypress/xpath": "^2.0.3",
     "cypress": "^13.6.2",
     "cypress-mochawesome-reporter": "^3.8.1",
     "mocha": "^10.3.0",
     "mochawesome": "^7.1.3",
     "mochawesome-merge": "^4.3.0",
-    "mochawesome-report-generator": "^6.2.0"
+    "mochawesome-report-generator": "^6.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1",
+    "vite": "^4.5.1",
+    "@vitejs/plugin-react": "^3.1.0"
   }
 }
