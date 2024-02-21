@@ -1,9 +1,16 @@
 const valid_users = require('../fixtures/login.json')
-const incorrect_emails = require('../fixtures/incorrect_email.json')
+import { saveFakeUsers } from '../utils/generator'
+
 
 describe('Test fetching api', () => {
+
+    let fakeUsers = []
+
+    before(function () {
+        fakeUsers = saveFakeUsers(5)
+    })
     valid_users.forEach((user) => {
-        it("get error in scope of missed password field", () => {
+        it("get error in scope of missed password field", function () {
             cy.request({
                 method: "POST",
                 url: "https://reqres.in/api/login",
@@ -26,7 +33,8 @@ describe('Test fetching api', () => {
             })
         })
     })
-    incorrect_emails.forEach((emails_data) => {
+
+    fakeUsers.forEach(function (emails_data) {
         it(`check error message and 400 error code for user ${emails_data.email}`, () => {
             cy.request({
                 method: "POST",

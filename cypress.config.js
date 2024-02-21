@@ -1,6 +1,7 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+
   // reporter: "mochawesome",
   // reporterOptions: {
   //   "overwrite": false,
@@ -17,6 +18,11 @@ module.exports = defineConfig({
     baseUrl: "https://example.cypress.io",
     setupNodeEvents(on, config) {
       require("cypress-mochawesome-reporter/plugin")(on);
+      on('task', {
+        getPath() {
+          return process.cwd()
+        },
+      })
     },
   },
 

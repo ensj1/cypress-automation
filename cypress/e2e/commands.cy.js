@@ -7,7 +7,7 @@ describe('Test the Commands Pages', () => {
     const actionsPage = new ActionsPage();
     const networksPage = new NetworksPage();
 
-    beforeEach(() => {
+    before(function () {
         cy.fixture('example').then(function (data) {
             this.data = data
             cy.log('data from example is: ', this.data)
