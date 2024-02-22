@@ -1,4 +1,5 @@
 const { defineConfig } = require("cypress");
+// const { beforeRunHook, afterRunHook } = require('cypress-mochawesome-reporter/lib');
 
 module.exports = defineConfig({
 
@@ -14,6 +15,13 @@ module.exports = defineConfig({
   //   toConsole: true,
   // },
   reporter: "cypress-mochawesome-reporter",
+  reporterOptions: {
+    charts: true,
+    reportPageTitle: 'Cypress Result Report',
+    embeddedScreenshots: true,
+    inlineAssets: true,
+    saveAllAttempts: false,
+  },
   e2e: {
     baseUrl: "https://example.cypress.io",
     setupNodeEvents(on, config) {
@@ -22,7 +30,16 @@ module.exports = defineConfig({
         getPath() {
           return process.cwd()
         },
-      })
+      });
+      // on('before:run', async (details) => {
+      //   console.log('override before:run');
+      //   await beforeRunHook(details);
+      // });
+
+      // on('after:run', async () => {
+      //   console.log('override after:run');
+      //   await afterRunHook();
+      // });
     },
   },
 

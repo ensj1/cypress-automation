@@ -70,4 +70,8 @@ describe('Test the Commands Pages', () => {
         actionsPage.getActionCanvas().click('bottomRight')
         actionsPage.getActionCanvas().click(80, 100)
     })
+
+    it.skip('skip test example', () => {
+        cy.log('This is skipped test')
+    })
 })

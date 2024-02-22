@@ -6,8 +6,10 @@ describe('Test fetching api', () => {
 
     let fakeUsers = []
 
-    before(function () {
+    before('Get fake users before tests run', function () {
         fakeUsers = saveFakeUsers(5)
+        cy.log(fakeUsers)
+        expect(fakeUsers).to.not.be.empty
     })
     valid_users.forEach((user) => {
         it("get error in scope of missed password field", function () {
