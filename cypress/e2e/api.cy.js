@@ -1,6 +1,7 @@
+/// <reference types="cypress" />
+
 const valid_users = require('../fixtures/login.json')
 import { saveFakeUsers } from '../utils/generator'
-
 
 describe('Test fetching api', () => {
 

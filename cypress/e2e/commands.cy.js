@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import ActionsPage from '../pages/actions.page';
 import NetworksPage from '../pages/networks.page';
 

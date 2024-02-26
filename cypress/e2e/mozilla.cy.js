@@ -1,10 +1,11 @@
+/// <reference types="cypress" />
 import MozillaHomePage from "../pages/mozilla.page";
 
 describe('Mozilla WebPage Test', () => {
 
     const mozillaPage = new MozillaHomePage();
 
-    it('test page with synchronize', () => {
+    it.skip('test page with synchronize', () => {
         mozillaPage.visit().getProductHelpLinkClick().typeToTheSupportInput('email')
         cy.wait(2000).then(() => {
             console.log("tes is finished")

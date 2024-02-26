@@ -23,7 +23,7 @@
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
     "@vitejs/plugin-react": "^3.1.0",
-    "cypress": "^13.6.2",
+    "cypress": "^13.6.6",
     "cypress-mochawesome-reporter": "^3.8.1",
     "mocha": "^10.3.0",
     "mochawesome": "^7.1.3",
