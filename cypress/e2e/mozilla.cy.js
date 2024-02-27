@@ -5,10 +5,9 @@ describe('Mozilla WebPage Test', () => {
 
     const mozillaPage = new MozillaHomePage();
 
-    it.skip('test page with synchronize', () => {
+    it('test page with synchronize', () => {
         mozillaPage.visit().getProductHelpLinkClick().typeToTheSupportInput('email')
         cy.wait(2000).then(() => {
-            console.log("tes is finished")
             fetch('https://api.spacexdata.com/v3/missions')
                 .then((res) => res.json())
                 .then((data) => {
@@ -19,7 +18,13 @@ describe('Mozilla WebPage Test', () => {
     })
 
     it('mouse hover should work', () => {
-        mozillaPage.navigate('/pl/firefox/').clickOnTheFirstMenuLink()
+        /* 
+        *  There are possibility to do it by cypress methods like
+        *  .invoke('addClass', 'mzp-is-animated mzp-is-selected') or
+        *  directly to click on the web element .clickOnTheFirstMenuLink()
+        *  But it is better to simulate it with external library 
+        */
+        mozillaPage.navigate('/pl/firefox/').getFirstMenuLink().parent().realHover()
         mozillaPage.getFirstFirefoxMenuLink().should('be.visible')
     })
 })

@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { times } from "lodash"
 
-const createFakeUser = () => ({
+export const createFakeUser = () => ({
     email: faker.internet.email(),
     password: faker.internet.password()
 })
@@ -11,8 +11,6 @@ export const createSeedUsers = (numberOfUsers) =>
 
 export const saveFakeUsers = (numberOfUsers) => {
     const seedUsers = createSeedUsers(numberOfUsers)
-    const path = cy.task('getPath')
-    expect(path).to.not.be.empty
 
     cy.writeFile("cypress/fixtures/incorrect_email.json", seedUsers)
     cy.readFile("cypress/fixtures/incorrect_email.json", { timeout: 6000 }).then((text) => {

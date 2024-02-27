@@ -16,6 +16,10 @@ describe('Test the Commands Pages', () => {
         })
     })
 
+    beforeEach(() => {
+        cy.fixture('login.json').as('loginData')
+    })
+
     it('use fixture data in network', function () {
         networksPage.visit()
         cy.intercept('GET', '**/comments/*', this.data).as('getComment')
@@ -25,12 +29,12 @@ describe('Test the Commands Pages', () => {
         })
     })
 
-    // it('successfully loads', () => {
-    //     cy.visit('https://docs.cypress.io/guides/overview/why-cypress') // change URL to match your dev URL
-    //     cy.get('a').contains('Key Differences').click()
-    //     cy.url().should('contain', 'key-differences')
-    //     cy.get('.headerWrapper_tu51 h1').invoke('text').should('equal', 'Key Differences')
-    // })
+    it('test stubbed variable', function () {
+        cy.get('@loginData').then((data) => {
+            expect(data[0].email).equal('eve.holt@reqres.in')
+        })
+        expect(this.loginData).not.be.empty
+    })
 
     it('doc actions are clickable', () => {
         cy.visit('https://example.cypress.io')

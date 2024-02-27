@@ -1,5 +1,6 @@
 const { defineConfig } = require("cypress");
-// const { beforeRunHook, afterRunHook } = require('cypress-mochawesome-reporter/lib');
+const { beforeRunHook, afterRunHook } = require('cypress-mochawesome-reporter/lib');
+const { setupDb } = require('./cypress/utils/setupDb')
 
 module.exports = defineConfig({
 
@@ -27,19 +28,17 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       require("cypress-mochawesome-reporter/plugin")(on);
       on('task', {
-        getPath() {
-          return process.cwd()
-        },
+        setupDb
       });
-      // on('before:run', async (details) => {
-      //   console.log('override before:run');
-      //   await beforeRunHook(details);
-      // });
+      on('before:run', async (details) => {
+        console.log('override before:run');
+        await beforeRunHook(details);
+      });
 
-      // on('after:run', async () => {
-      //   console.log('override after:run');
-      //   await afterRunHook();
-      // });
+      on('after:run', async () => {
+        console.log('override after:run');
+        await afterRunHook();
+      });
     },
   },
 
