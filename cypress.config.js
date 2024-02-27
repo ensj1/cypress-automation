@@ -1,5 +1,6 @@
 const { defineConfig } = require("cypress");
 const { beforeRunHook, afterRunHook } = require('cypress-mochawesome-reporter/lib');
+const { log } = require('cypress-log/log.task');
 const { setupDb } = require('./cypress/utils/setupDb')
 
 module.exports = defineConfig({
@@ -39,6 +40,7 @@ module.exports = defineConfig({
         console.log('override after:run');
         await afterRunHook();
       });
+      on('task', { log });
     },
   },
 

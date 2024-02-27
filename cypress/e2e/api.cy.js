@@ -9,7 +9,7 @@ describe('Test fetching api', () => {
 
     before('Get fake users before tests run', function () {
         fakeUsers = saveFakeUsers(5)
-        cy.log(fakeUsers)
+        cy.log(`fake users: ${JSON.stringify(fakeUsers)}`)
         expect(fakeUsers).to.not.be.empty
     })
     valid_users.forEach((user) => {

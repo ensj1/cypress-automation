@@ -25,7 +25,7 @@ describe('Test the Commands Pages', () => {
         cy.intercept('GET', '**/comments/*', this.data).as('getComment')
         networksPage.clickOnTheNetworkButton()
         cy.wait('@getComment').then((res) => {
-            cy.log('RES: ', res)
+            cy.log(`RES:  ${JSON.stringify(res)}`)
         })
     })
 
@@ -78,6 +78,6 @@ describe('Test the Commands Pages', () => {
     })
 
     it.skip('skip test example', () => {
-        cy.log('This is skipped test')
+        cy.log('This is a skipped test')
     })
 })
