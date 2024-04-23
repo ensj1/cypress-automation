@@ -1,4 +1,4 @@
-class ActionsPage {
+export default class ActionsPage {
 
     visit() {
         cy.visit('/commands/actions');
@@ -29,5 +29,3 @@ class ActionsPage {
         return this;
     }
 }
-
-export default ActionsPage;

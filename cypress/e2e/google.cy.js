@@ -11,7 +11,7 @@ describe('Google search should work', () => {
     })
 
     beforeEach(() => {
-        cy.visit('https://google.com');
+        cy.visit('https://www.google.com');
     })
 
     it('sheck search functionality', { defaultCommandTimeout: 6000 }, () => {

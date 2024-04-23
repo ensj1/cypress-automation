@@ -1,9 +1,9 @@
-const { defineConfig } = require("cypress");
-const { beforeRunHook, afterRunHook } = require('cypress-mochawesome-reporter/lib');
-const { log } = require('cypress-log/log.task');
-const { setupDb } = require('./cypress/utils/setupDb')
+import { defineConfig } from "cypress";
+import { beforeRunHook, afterRunHook } from 'cypress-mochawesome-reporter/lib';
+import { log } from 'cypress-log/log.task';
+import { setupDb } from './cypress/utils/setupDb';
 
-module.exports = defineConfig({
+export default defineConfig({
 
   // reporter: "mochawesome",
   // reporterOptions: {
@@ -16,6 +16,7 @@ module.exports = defineConfig({
   //   mochaFile: 'results/my-test-output.xml',
   //   toConsole: true,
   // },
+  chromeWebSecurity: false,
   reporter: "cypress-mochawesome-reporter",
   reporterOptions: {
     charts: true,
@@ -27,7 +28,6 @@ module.exports = defineConfig({
   e2e: {
     baseUrl: "https://example.cypress.io",
     setupNodeEvents(on, config) {
-      require("cypress-mochawesome-reporter/plugin")(on);
       on('task', {
         setupDb
       });

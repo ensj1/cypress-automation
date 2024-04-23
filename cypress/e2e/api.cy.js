@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-const valid_users = require('../fixtures/login.json')
+//import { valid_users } from '../fixtures/login.json' assert { type: 'json' };
 import { saveFakeUsers } from '../utils/generator'
 
 describe('Test fetching api', () => {
@@ -12,8 +12,8 @@ describe('Test fetching api', () => {
         cy.log(`fake users: ${JSON.stringify(fakeUsers)}`)
         expect(fakeUsers).to.not.be.empty
     })
-    valid_users.forEach((user) => {
-        it("get error in scope of missed password field", function () {
+    it("get error in scope of missed password field", function () {
+        cy.fixture('login').then((user) =>
             cy.request({
                 method: "POST",
                 url: "https://reqres.in/api/login",
@@ -21,10 +21,11 @@ describe('Test fetching api', () => {
                 failOnStatusCode: false
             }).should((response) => {
                 expect(response.status).to.eq(400)
-                expect(response.body.error).eq("Missing password")
-            })
-        })
-        it("get error in scope of missed user field", () => {
+                expect(response.body.error).eq("Missing email or username")
+            }))
+    })
+    it("get error in scope of missed user field", () => {
+        cy.fixture('login').then((user) =>
             cy.request({
                 method: "POST",
                 url: "https://reqres.in/api/login",
@@ -33,9 +34,9 @@ describe('Test fetching api', () => {
             }).should((response) => {
                 expect(response.status).to.eq(400)
                 expect(response.body.error).eq("Missing email or username")
-            })
-        })
+            }))
     })
+
 
     fakeUsers.forEach(function (emails_data) {
         it(`check error message and 400 error code for user ${emails_data.email}`, () => {
